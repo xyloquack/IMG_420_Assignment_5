@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://dobqmf2fiv2ev"]
+
+[ext_resource type="PackedScene" uid="uid://cj8awqcyjpw42" path="res://scenes/player.tscn" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://cdg6f1qq72vn0" path="res://scenes/physics_demo.tscn" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://boah3mppt8lp8" path="res://scenes/particle_system.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://bxxep1itui4hv" path="res://scenes/laser_system.tscn" id="4_o6xl0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(5570, 20)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jyhfs")]
+
+[node name="PhysicsDemo" parent="." instance=ExtResource("2_tbgi4")]
+position = Vector2(-679, -235)
+
+[node name="ParticleSystem" parent="." instance=ExtResource("3_tefeu")]
+position = Vector2(-291, -399)
+
+[node name="LaserSystem" parent="." instance=ExtResource("4_o6xl0")]
+position = Vector2(763, -484)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 93)
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D/CollisionShape2D"]
+polygon = PackedVector2Array(2785, 10, -2785, 10, -2785, -10, 2785, -10)
